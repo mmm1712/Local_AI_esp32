@@ -2462,6 +2462,10 @@ bool scan_lm_head_topk(const float* x, std::uint32_t* top_tokens, float* top_sco
   for(std::size_t i=0;i<TOP_K;++i){ top_tokens[i]=0; top_scores[i]=-INFINITY; }
   const std::uint32_t start=micros();
   if (lm_head_cache_fp32) {
+    static_assert(
+        (cfg::kDModel % 8) == 0,
+        "kDModel must be divisible by 8");
+
     for(std::uint32_t tok=0;
         tok<cfg::kVocabSize;
         ++tok) {
@@ -2479,10 +2483,6 @@ bool scan_lm_head_topk(const float* x, std::uint32_t* top_tokens, float* top_sco
       float acc5 = 0.0f;
       float acc6 = 0.0f;
       float acc7 = 0.0f;
-
-      static_assert(
-          (cfg::kDModel % 8) == 0,
-          "kDModel must be divisible by 8");
 
       for(std::size_t i=0;
           i<cfg::kDModel;
