@@ -8,7 +8,7 @@
 #include <cstring>
 #include "esp_heap_caps.h"
 #include "esp_partition.h"
-#include "esp_spi_flash.h"
+#include "spi_flash_mmap.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"
