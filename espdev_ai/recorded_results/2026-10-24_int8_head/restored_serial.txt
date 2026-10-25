@@ -26,7 +26,7 @@ Flash=33554432 PSRAM=yes free_psram=16381348
 [READY] Local chat demo. Type a short message and press Enter.
 Stops on END or after 24 generated tokens. Try: hello | who are you? | i feel sad
 
-You> 
+You>
 You: hello
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [hello]
@@ -48,4 +48,4 @@ PocketGPT: Hello.
 [ROPECACHE] build_ms=0.9 hits=77 misses=7
 [SWIGLUDUAL] pair_ms=86.6 main_work_ms=84.5 worker_work_ms=84.7
 
-You> 
+You>

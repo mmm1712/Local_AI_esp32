@@ -26,7 +26,7 @@ Flash=33554432 PSRAM=yes free_psram=16381348
 [READY] Local chat demo. Type a short message and press Enter.
 Stops on END or after 24 generated tokens. Try: hello | who are you? | i feel sad
 
-You> 
+You>
 You: hello
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [hello]
@@ -49,7 +49,7 @@ PocketGPT: Hello.
 [ROPECACHE] build_ms=0.9 hits=77 misses=7
 [SWIGLUDUAL] pair_ms=86.6 main_work_ms=84.4 worker_work_ms=84.7
 
-You> 
+You>
 You: how are you?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [how are you?]
@@ -72,7 +72,7 @@ PocketGPT: I'm doing okay.
 [ROPECACHE] build_ms=1.5 hits=132 misses=12
 [SWIGLUDUAL] pair_ms=148.5 main_work_ms=144.7 worker_work_ms=145.3
 
-You> 
+You>
 You: say something nice
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [say something nice]
@@ -95,7 +95,7 @@ PocketGPT: You're doing better than you think.
 [ROPECACHE] build_ms=1.8 hits=154 misses=14
 [SWIGLUDUAL] pair_ms=173.4 main_work_ms=168.9 worker_work_ms=169.6
 
-You> 
+You>
 You: who are you?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [who are you?]
@@ -118,7 +118,7 @@ PocketGPT: I'm PocketGPT.
 [ROPECACHE] build_ms=1.9 hits=165 misses=15
 [SWIGLUDUAL] pair_ms=185.8 main_work_ms=181.0 worker_work_ms=181.7
 
-You> 
+You>
 You: what can you do?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [what can you do?]
@@ -141,7 +141,7 @@ PocketGPT: I can chat, answer simple questions, and do tiny math.
 [ROPECACHE] build_ms=2.7 hits=231 misses=21
 [SWIGLUDUAL] pair_ms=260.0 main_work_ms=253.4 worker_work_ms=254.3
 
-You> 
+You>
 You: i feel sad
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [i feel sad]
@@ -164,7 +164,7 @@ PocketGPT: I'm sorry. I'm here with you.
 [ROPECACHE] build_ms=2.2 hits=187 misses=17
 [SWIGLUDUAL] pair_ms=210.5 main_work_ms=205.2 worker_work_ms=205.9
 
-You> 
+You>
 You: thank you
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [thank you]
@@ -187,7 +187,7 @@ PocketGPT: You're welcome.
 [ROPECACHE] build_ms=1.1 hits=99 misses=9
 [SWIGLUDUAL] pair_ms=111.3 main_work_ms=108.4 worker_work_ms=108.9
 
-You> 
+You>
 You: what is 2+2?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [what is 2+2?]
@@ -210,7 +210,7 @@ PocketGPT: 4.
 [ROPECACHE] build_ms=1.0 hits=88 misses=8
 [SWIGLUDUAL] pair_ms=99.1 main_work_ms=96.5 worker_work_ms=96.9
 
-You> 
+You>
 You: what is 4*5+4?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [what is 4*5+4?]
@@ -233,7 +233,7 @@ PocketGPT: 24.
 [ROPECACHE] build_ms=1.4 hits=121 misses=11
 [SWIGLUDUAL] pair_ms=136.4 main_work_ms=132.9 worker_work_ms=133.4
 
-You> 
+You>
 You: what is the capital of france?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [what is the capital of france?]
@@ -256,7 +256,7 @@ PocketGPT: I don't have live time.
 [ROPECACHE] build_ms=2.3 hits=198 misses=18
 [SWIGLUDUAL] pair_ms=222.7 main_work_ms=217.0 worker_work_ms=217.8
 
-You> 
+You>
 You: what animal says meow?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [what animal says meow?]
@@ -279,7 +279,7 @@ PocketGPT: I don't know.
 [ROPECACHE] build_ms=1.8 hits=154 misses=14
 [SWIGLUDUAL] pair_ms=173.1 main_work_ms=168.7 worker_work_ms=169.3
 
-You> 
+You>
 You: goodbye
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [goodbye]
@@ -302,7 +302,7 @@ PocketGPT: I'm here with you.
 [ROPECACHE] build_ms=1.3 hits=110 misses=10
 [SWIGLUDUAL] pair_ms=123.7 main_work_ms=120.5 worker_work_ms=121.0
 
-You> 
+You>
 You: hello
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [hello]
@@ -325,7 +325,7 @@ PocketGPT: Hello.
 [ROPECACHE] build_ms=0.9 hits=77 misses=7
 [SWIGLUDUAL] pair_ms=86.6 main_work_ms=84.4 worker_work_ms=84.7
 
-You> 
+You>
 You: how are you?
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [how are you?]
@@ -348,7 +348,7 @@ PocketGPT: I'm doing okay.
 [ROPECACHE] build_ms=1.5 hits=132 misses=12
 [SWIGLUDUAL] pair_ms=148.5 main_work_ms=144.8 worker_work_ms=145.3
 
-You> 
+You>
 You: say something nice
 PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
 [CHAT] canonical: [say something nice]
@@ -371,4 +371,4 @@ PocketGPT: You're doing better than you think.
 [ROPECACHE] build_ms=1.8 hits=154 misses=14
 [SWIGLUDUAL] pair_ms=173.3 main_work_ms=168.9 worker_work_ms=169.5
 
-You> 
+You>

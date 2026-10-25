@@ -861,9 +861,9 @@
     }
   ],
   "serial_log_sha256": {
-    "fp32_serial.txt": "90dd0b9348fc919ed638c2baa716fa7a2d03d17560d72b2ae38ed1dfe414c525",
-    "int8_serial.txt": "107c96708215bfd782a18a04a65ea148c9c522b20c6e04fc51be936695bd5153",
-    "restored_serial.txt": "23adde172cf77a5b59940cc0fa1300c6b12ccba3629a7e9aac8e9294aa89ca0b"
+    "fp32_serial.txt": "fd3a6186053e71ca78bdb41f18141f3e34d32926dc91c2d8fc2b1669dfed935a",
+    "int8_serial.txt": "a5ca2f35b540617b8185f845fbb754a6e9eb113592836169738d7ca7fb424a3a",
+    "restored_serial.txt": "e3ea428959cd77d58ba44b3d29d4dfcd83cb4650decc06fc4b4a851ae1b243d6"
   },
   "head_cache_bytes": {
     "fp32": 11010048,
@@ -880,5 +880,6 @@
   "test_build_binary_sha256": {
     "local_devkit": "9efb772545dc77985348ca2438fd50fdbd80dd9ad075537062bd0a85a5bfc017",
     "local_devkit_int8": "9663373f02341b5298823311a87da8c191145cc6db0960e90ac0e5507a463e3a"
-  }
+  },
+  "serial_log_normalization": "CR removed and trailing line whitespace trimmed for repository text records; original serial captures retained locally."
 }
