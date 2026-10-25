@@ -1,0 +1,29 @@
+{
+  "prompts": [
+    "hello",
+    "how are you?",
+    "say something nice",
+    "who are you?",
+    "what can you do?",
+    "i feel sad",
+    "thank you",
+    "what is 2+2?",
+    "what is 4*5+4?",
+    "what is the capital of france?",
+    "what animal says meow?",
+    "goodbye",
+    "hello",
+    "how are you?",
+    "say something nice"
+  ],
+  "model": "verified TIED30M, 30,460,864 independent parameters",
+  "reply_cap": 24,
+  "context": 64,
+  "builds": [
+    "local_devkit",
+    "local_devkit_int8"
+  ],
+  "candidate": "W8 head, per-64 activation quantization, integer SIMD dot products",
+  "test_instrumentation": "Generated token IDs printed after timing fields are captured; only in test_firmware copy, not repository source.",
+  "restore": "original_app0.bin backup from the same connected device; write app0 only and verify app hash, unchanged boot prefix, model SHA and Hello after restore"
+}

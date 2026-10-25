@@ -16,6 +16,10 @@
 #include "model_offsets.h"
 #include "model_layout.h"
 #include "mbedtls/sha256.h"
+#if defined(POCKETGPT_INT8_HEAD)
+#include "int8_head.h"
+extern "C" int pocketgpt_head_dot_s8(const std::int8_t*, const std::int8_t*, std::int32_t*, int);
+#endif
 
                                                                                                
                                                                                                   
@@ -92,6 +96,16 @@ const esp_partition_t* part_kept = nullptr;
 
 float* lm_head_cache_fp32 = nullptr;
 std::size_t lm_head_cache_bytes = 0;
+#if defined(POCKETGPT_INT8_HEAD)
+constexpr std::size_t kHeadActivationGroup = 64;
+static_assert(cfg::kDModel % kHeadActivationGroup == 0, "head activation group mismatch");
+std::int8_t* lm_head_cache_int8 = nullptr;
+float* lm_head_row_scales = nullptr;
+std::uint32_t lm_head_source_crc32 = 0;
+std::uint32_t head_crc_table[256];
+alignas(16) std::int8_t head_input_int8[cfg::kDModel + 16];
+alignas(16) float head_input_scales[cfg::kDModel / kHeadActivationGroup];
+#endif
 
                                                     
                                                                     
@@ -299,7 +313,70 @@ bool read_embedding_row(std::uint32_t token_id, float* out) {
 }
 
 
+#if defined(POCKETGPT_INT8_HEAD)
+std::uint32_t head_crc_update(std::uint32_t crc, const void* data, std::size_t count) {
+  const auto* bytes = static_cast<const std::uint8_t*>(data);
+  for (std::size_t i = 0; i < count; ++i)
+    crc = head_crc_table[(crc ^ bytes[i]) & 0xFFu] ^ (crc >> 8);
+  return crc;
+}
+
+bool cache_int8_head_to_psram() {
+  constexpr std::size_t elements = cfg::kVocabSize * cfg::kDModel;
+  lm_head_cache_bytes = elements + 16 + cfg::kVocabSize * sizeof(float);
+  lm_head_cache_int8 = static_cast<std::int8_t*>(heap_caps_aligned_alloc(
+      16, elements + 16, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT));
+  lm_head_row_scales = static_cast<float*>(heap_caps_aligned_alloc(
+      16, cfg::kVocabSize * sizeof(float), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT));
+  auto release = []() {
+    heap_caps_free(lm_head_cache_int8);
+    heap_caps_free(lm_head_row_scales);
+    lm_head_cache_int8 = nullptr;
+    lm_head_row_scales = nullptr;
+  };
+  if (!lm_head_cache_int8 || !lm_head_row_scales) {
+    release();
+    Serial.println("[LMHEAD_INT8_CACHE] FAIL allocation");
+    return false;
+  }
+  for (std::uint32_t i = 0; i < 256; ++i) {
+    std::uint32_t c = i;
+    for (int bit = 0; bit < 8; ++bit) c = (c & 1u) ? 0xEDB88320u ^ (c >> 1) : c >> 1;
+    head_crc_table[i] = c;
+  }
+  alignas(16) float row[cfg::kDModel];
+  alignas(16) std::int8_t quantized[cfg::kDModel + 16];
+  float scale = 0;
+  std::uint32_t crc = 0xFFFFFFFFu;
+  for (std::uint32_t token = 0; token < cfg::kVocabSize; ++token) {
+    if (!read_fp16_vector(part_kept,
+          tied::kLmHeadKeptOffset + token * tied::kLmHeadRowBytes,
+          row, cfg::kDModel, "lm_head_int8_cache") ||
+        !pocketgpt_int8_head::quantize(row, cfg::kDModel, cfg::kDModel,
+          quantized, sizeof(quantized), &scale, 1)) {
+      release();
+      Serial.println("[LMHEAD_INT8_CACHE] FAIL source");
+      return false;
+    }
+    crc = head_crc_update(crc, row, sizeof(row));
+    std::memcpy(lm_head_cache_int8 + token * cfg::kDModel, quantized, cfg::kDModel);
+    lm_head_row_scales[token] = scale;
+    if ((token & 0xFFu) == 0) yield();
+  }
+  std::memset(lm_head_cache_int8 + elements, 0, 16);
+  lm_head_source_crc32 = crc ^ 0xFFFFFFFFu;
+  Serial.printf("[LMHEAD_INT8_CACHE] PASS bytes=%lu activation_group=%u free_psram=%lu\n",
+      static_cast<unsigned long>(lm_head_cache_bytes),
+      static_cast<unsigned>(kHeadActivationGroup),
+      static_cast<unsigned long>(ESP.getFreePsram()));
+  return true;
+}
+#endif
+
 bool cache_lm_head_to_psram() {
+#if defined(POCKETGPT_INT8_HEAD)
+  return cache_int8_head_to_psram();
+#else
   const std::size_t elements =
       static_cast<std::size_t>(cfg::kVocabSize)
       * static_cast<std::size_t>(cfg::kDModel);
@@ -389,6 +466,7 @@ bool cache_lm_head_to_psram() {
           ESP.getFreePsram()));
 
   return true;
+#endif
 }
 
 bool tied30m_fail(const char* reason) {
@@ -460,6 +538,18 @@ bool verify_tied30m_package() {
 }
 
 bool verify_head_cache_crc() {
+#if defined(POCKETGPT_INT8_HEAD)
+  const std::uint32_t weights_crc = head_crc_update(0xFFFFFFFFu,
+      lm_head_cache_int8, cfg::kVocabSize * cfg::kDModel + 16) ^ 0xFFFFFFFFu;
+  const std::uint32_t scales_crc = head_crc_update(0xFFFFFFFFu,
+      lm_head_row_scales, cfg::kVocabSize * sizeof(float)) ^ 0xFFFFFFFFu;
+  const bool ok = lm_head_source_crc32 == tied::kHeadCacheCrc32 &&
+      weights_crc == 0x2FF85515u && scales_crc == 0xA16AC093u;
+  Serial.printf("[TIED30M_HEAD_CRC] %s source=%08lx weights=%08lx scales=%08lx\n",
+      ok ? "PASS" : "FAIL", static_cast<unsigned long>(lm_head_source_crc32),
+      static_cast<unsigned long>(weights_crc), static_cast<unsigned long>(scales_crc));
+  return ok;
+#else
   static std::uint32_t table[256];
   for (std::uint32_t i = 0; i < 256; ++i) {
     std::uint32_t c = i;
@@ -477,6 +567,7 @@ bool verify_head_cache_crc() {
   Serial.printf("[TIED30M_HEAD_CRC] %s crc32=0x%08lx expected=0x%08lx\n", ok ? "PASS" : "FAIL",
                 static_cast<unsigned long>(crc), static_cast<unsigned long>(tied::kHeadCacheCrc32));
   return ok;
+#endif
 }
 
 float l2_norm(const float* values, std::size_t count) { double sum=0.0; for(std::size_t i=0;i<count;++i) sum += static_cast<double>(values[i]) * static_cast<double>(values[i]); return sqrtf(static_cast<float>(sum)); }
@@ -2461,6 +2552,21 @@ void insert_topk(std::uint32_t token, float score, std::uint32_t* top_tokens, fl
 bool scan_lm_head_topk(const float* x, std::uint32_t* top_tokens, float* top_scores, std::uint32_t* scan_us_out){
   for(std::size_t i=0;i<TOP_K;++i){ top_tokens[i]=0; top_scores[i]=-INFINITY; }
   const std::uint32_t start=micros();
+#if defined(POCKETGPT_INT8_HEAD)
+  if (!lm_head_cache_int8 || !lm_head_row_scales ||
+      !pocketgpt_int8_head::quantize(x, cfg::kDModel, kHeadActivationGroup,
+        head_input_int8, sizeof(head_input_int8), head_input_scales,
+        cfg::kDModel / kHeadActivationGroup)) return false;
+  for (std::uint32_t token = 0; token < cfg::kVocabSize; ++token) {
+    float score = 0;
+    if (!pocketgpt_int8_head::score_row(
+          lm_head_cache_int8 + token * cfg::kDModel, head_input_int8,
+          head_input_scales, lm_head_row_scales[token], cfg::kDModel,
+          kHeadActivationGroup, &score, pocketgpt_head_dot_s8)) return false;
+    insert_topk(token, score, top_tokens, top_scores);
+    if ((token & 0xFFu) == 0) yield();
+  }
+#else
   if (lm_head_cache_fp32) {
     static_assert(
         (cfg::kDModel % 8) == 0,
@@ -2522,6 +2628,7 @@ bool scan_lm_head_topk(const float* x, std::uint32_t* top_tokens, float* top_sco
       if((tok & 0xFFu)==0) yield();
     }
   }
+#endif
   if(scan_us_out) *scan_us_out=micros()-start;
   return true;
 }
