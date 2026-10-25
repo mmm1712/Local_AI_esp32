@@ -45,6 +45,16 @@ The XIAO tests took about 6.4 seconds for `hello` and 11.8 seconds for `how are 
 
 Speeds are individual measurements, not guarantees. The packages use different mixed-precision layouts. See [model and quantization details](docs/MODEL_CARD.md).
 
+### Optional DevKit INT8 SIMD optimization
+
+The ESP32-S3 DevKit supports an optional INT8 SIMD output head for faster inference.
+
+In 15 paired hardware tests, generation speed increased from approximately 1.42 to 1.65 tokens/s, a 16.4% improvement. The optimization uses the existing trained model without retraining.
+
+The standard FP32 output head remains the default. The optimized implementation is available through the separate `local_devkit_int8` build configuration.
+
+See the [performance comparison results](espdev_ai/recorded_results/2026-10-24_int8_head/comparison.json) for the recorded measurements.
+
 ## Training
 
 The [original training code and settings](training/README.md) are included. **Base V2** names the second base-model version, trained from random initialization on about 300 million token positions before later refinement. Exact historical retraining requires additional data and records described in that guide.
