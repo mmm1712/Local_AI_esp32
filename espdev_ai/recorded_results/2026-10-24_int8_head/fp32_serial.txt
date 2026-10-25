@@ -1,0 +1,374 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40056f6d
+SPIWP:0xee
+Octal Flash Mode Enabled
+For OPI Flash, Use Default Flash Boot Mode
+mode:SLOW_RD, clock div:1
+load:0x3fce2810,len:0x1078
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xaf0
+load:0x403cb700,len:0x2e54
+entry 0x403c889c
+E (176) esp_core_dump_flash: No core dump partition found!
+E (176) esp_core_dump_flash: No core dump partition found!
+
+=== PocketGPT-S3 TIED30M dedup serial chat (30.46M tied, 20.24MB pack) ===
+Flash=33554432 PSRAM=yes free_psram=16381348
+[CONFIG] PASS layers=12 d_model=448 d_ff=1344 vocab=6144
+[TOKENIZER] PASS init_ms=72.039 free_psram=16018516
+[GATEUP_DUAL] PASS main_core=1 worker_core=0
+[TIED30M_PACKAGE] PASS footer=PGTIEDv1 bytes=20241616 q4=3f747bb82a16ae6b scales=9fec62a157d17c78 kept=d32af894239ee660 verify_ms=1429.8
+[LMHEAD_FP32_CACHE] PASS bytes=11010048 load_ms=1191.213 first4096_sum=362132 free_psram=4041464
+[TIED30M_HEAD_CRC] PASS crc32=0x6306a56a expected=0x6306a56a
+[SCALECACHE] PASS count=432768 bytes=1731072 load_ms=190.495 checksum4096=77803.350353241 free_psram=2304756
+[READY] Local chat demo. Type a short message and press Enter.
+Stops on END or after 24 generated tokens. Try: hello | who are you? | i feel sad
+
+You> 
+You: hello
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [hello]
+[CHAT] native prompt question_tokens=2 total_tokens=4 encode_us=164
+  ids: 4 576 625 5
+[CHAT] END step=3 generated=3
+[TEST_IDS] 355,3048,6070|stopped=yes
+PocketGPT: Hello.
+[RAW] Hello.
+[STATS] tokens=3 stopped=yes total_ms=4420.7 generation_ms=2180.6 gen_tps=1.3757 layers_ms=3836.6 lm_head_ms=494.4
+[PROFILE] layer_load_ms=0.0 layer_map_ms=47.9 mmap_fallbacks=0
+[OPS] normA=31.3 q=321.8 k=159.7 v=159.8 attn=13.8 o=321.9 normF=31.2 gate=1917.6 up=1918.9 swiglu=86.6 down=947.4
+[GATEUP] pair_ms=1920.7 gate_work_ms=1917.6 up_work_ms=1918.9
+[DOWNSPLIT] pair_ms=947.4 main_work_ms=944.4 worker_work_ms=945.5
+[QSPLIT] pair_ms=321.8 main_work_ms=319.7 worker_work_ms=319.9
+[OSPLIT] pair_ms=321.9 main_work_ms=319.7 worker_work_ms=319.9
+[KVDUAL] pair_ms=161.8 k_work_ms=159.7 v_work_ms=159.8
+[ATTNDUAL] pair_ms=9.9 main_work_ms=8.5 worker_work_ms=8.1
+[ROPEKV] rope_ms=2.5 kvstore_ms=1.1 combined_ms=3.5
+[ROPECACHE] build_ms=0.9 hits=77 misses=7
+[SWIGLUDUAL] pair_ms=86.6 main_work_ms=84.4 worker_work_ms=84.7
+
+You> 
+You: how are you?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [how are you?]
+[CHAT] native prompt question_tokens=4 total_tokens=6 encode_us=268
+  ids: 4 643 362 342 6109 5
+[CHAT] END step=6 generated=6
+[TEST_IDS] 330,6088,6064,2392,3641,6070|stopped=yes
+PocketGPT: I'm doing okay.
+[RAW] I'm doing okay.
+[STATS] tokens=6 stopped=yes total_ms=7606.1 generation_ms=4243.3 gen_tps=1.4140 layers_ms=6587.1 lm_head_ms=865.2
+[PROFILE] layer_load_ms=0.0 layer_map_ms=82.1 mmap_fallbacks=0
+[OPS] normA=53.7 q=551.4 k=273.9 v=274.1 attn=33.3 o=552.2 normF=53.5 gate=3287.3 up=3289.7 swiglu=148.5 down=1624.1
+[GATEUP] pair_ms=3292.9 gate_work_ms=3287.3 up_work_ms=3289.7
+[DOWNSPLIT] pair_ms=1624.1 main_work_ms=1619.0 worker_work_ms=1620.9
+[QSPLIT] pair_ms=551.4 main_work_ms=547.9 worker_work_ms=548.2
+[OSPLIT] pair_ms=552.2 main_work_ms=548.3 worker_work_ms=548.8
+[KVDUAL] pair_ms=277.5 k_work_ms=273.9 v_work_ms=274.1
+[ATTNDUAL] pair_ms=26.6 main_work_ms=24.2 worker_work_ms=23.5
+[ROPEKV] rope_ms=4.3 kvstore_ms=1.8 combined_ms=6.0
+[ROPECACHE] build_ms=1.5 hits=132 misses=12
+[SWIGLUDUAL] pair_ms=148.5 main_work_ms=144.7 worker_work_ms=145.3
+
+You> 
+You: say something nice
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [say something nice]
+[CHAT] native prompt question_tokens=3 total_tokens=5 encode_us=472
+  ids: 4 1450 1071 2122 5
+[CHAT] END step=9 generated=9
+[TEST_IDS] 748,6088,270,2392,1200,663,342,1738,6070|stopped=yes
+PocketGPT: You're doing better than you think.
+[RAW] You're doing better than you think.
+[STATS] tokens=9 stopped=yes total_ms=9105.8 generation_ms=6304.8 gen_tps=1.4275 layers_ms=7689.3 lm_head_ms=1236.0
+[PROFILE] layer_load_ms=0.0 layer_map_ms=95.7 mmap_fallbacks=0
+[OPS] normA=62.7 q=643.5 k=319.5 v=319.9 attn=43.3 o=644.2 normF=62.4 gate=3834.8 up=3837.5 swiglu=173.4 down=1894.8
+[GATEUP] pair_ms=3841.2 gate_work_ms=3834.8 up_work_ms=3837.5
+[DOWNSPLIT] pair_ms=1894.8 main_work_ms=1888.8 worker_work_ms=1891.1
+[QSPLIT] pair_ms=643.5 main_work_ms=639.4 worker_work_ms=639.7
+[OSPLIT] pair_ms=644.2 main_work_ms=639.7 worker_work_ms=640.2
+[KVDUAL] pair_ms=323.8 k_work_ms=319.5 v_work_ms=319.9
+[ATTNDUAL] pair_ms=35.4 main_work_ms=32.7 worker_work_ms=31.8
+[ROPEKV] rope_ms=5.0 kvstore_ms=2.1 combined_ms=7.1
+[ROPECACHE] build_ms=1.8 hits=154 misses=14
+[SWIGLUDUAL] pair_ms=173.4 main_work_ms=168.9 worker_work_ms=169.6
+
+You> 
+You: who are you?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [who are you?]
+[CHAT] native prompt question_tokens=4 total_tokens=6 encode_us=263
+  ids: 4 636 362 342 6109 5
+[CHAT] END step=9 generated=9
+[TEST_IDS] 330,6088,6064,398,1698,318,6110,4044,6070|stopped=yes
+PocketGPT: I'm PocketGPT.
+[RAW] I'm PocketGPT.
+[STATS] tokens=9 stopped=yes total_ms=9669.2 generation_ms=6307.3 gen_tps=1.4269 layers_ms=8240.3 lm_head_ms=1236.0
+[PROFILE] layer_load_ms=0.0 layer_map_ms=102.6 mmap_fallbacks=0
+[OPS] normA=67.1 q=689.5 k=342.5 v=342.8 attn=48.8 o=690.2 normF=66.8 gate=4108.0 up=4110.9 swiglu=185.8 down=2030.1
+[GATEUP] pair_ms=4114.9 gate_work_ms=4108.0 up_work_ms=4110.9
+[DOWNSPLIT] pair_ms=2030.1 main_work_ms=2023.7 worker_work_ms=2026.1
+[QSPLIT] pair_ms=689.5 main_work_ms=685.2 worker_work_ms=685.4
+[OSPLIT] pair_ms=690.2 main_work_ms=685.4 worker_work_ms=686.0
+[KVDUAL] pair_ms=347.0 k_work_ms=342.5 v_work_ms=342.8
+[ATTNDUAL] pair_ms=40.5 main_work_ms=37.4 worker_work_ms=36.5
+[ROPEKV] rope_ms=5.3 kvstore_ms=2.2 combined_ms=7.5
+[ROPECACHE] build_ms=1.9 hits=165 misses=15
+[SWIGLUDUAL] pair_ms=185.8 main_work_ms=181.0 worker_work_ms=181.7
+
+You> 
+You: what can you do?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [what can you do?]
+[CHAT] native prompt question_tokens=5 total_tokens=7 encode_us=428
+  ids: 4 694 385 342 460 6109 5
+[CHAT] END step=14 generated=14
+[TEST_IDS] 330,385,437,277,6072,2317,2264,2166,6072,288,460,4964,5179,6070|stopped=yes
+PocketGPT: I can chat, answer simple questions, and do tiny math.
+[RAW] I can chat, answer simple questions, and do tiny math.
+[STATS] tokens=14 stopped=yes total_ms=13680.8 generation_ms=9756.9 gen_tps=1.4349 layers_ms=11556.2 lm_head_ms=1853.9
+[PROFILE] layer_load_ms=0.0 layer_map_ms=143.5 mmap_fallbacks=0
+[OPS] normA=94.0 q=965.2 k=479.4 v=479.8 attn=88.6 o=965.4 normF=93.6 gate=5752.2 up=5756.2 swiglu=260.0 down=2842.0
+[GATEUP] pair_ms=5761.8 gate_work_ms=5752.2 up_work_ms=5756.2
+[DOWNSPLIT] pair_ms=2842.0 main_work_ms=2833.2 worker_work_ms=2836.4
+[QSPLIT] pair_ms=965.2 main_work_ms=959.1 worker_work_ms=959.6
+[OSPLIT] pair_ms=965.4 main_work_ms=959.0 worker_work_ms=959.6
+[KVDUAL] pair_ms=485.7 k_work_ms=479.4 v_work_ms=479.8
+[ATTNDUAL] pair_ms=76.8 main_work_ms=72.3 worker_work_ms=71.3
+[ROPEKV] rope_ms=7.5 kvstore_ms=3.1 combined_ms=10.6
+[ROPECACHE] build_ms=2.7 hits=231 misses=21
+[SWIGLUDUAL] pair_ms=260.0 main_work_ms=253.4 worker_work_ms=254.3
+
+You> 
+You: i feel sad
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [i feel sad]
+[CHAT] native prompt question_tokens=3 total_tokens=5 encode_us=253
+  ids: 4 2192 1039 1365 5
+[CHAT] END step=12 generated=12
+[TEST_IDS] 330,6088,6064,1876,6070,330,6088,6064,1508,356,342,6070|stopped=yes
+PocketGPT: I'm sorry. I'm here with you.
+[RAW] I'm sorry. I'm here with you.
+[STATS] tokens=12 stopped=yes total_ms=11170.4 generation_ms=8369.5 gen_tps=1.4338 layers_ms=9343.9 lm_head_ms=1606.7
+[PROFILE] layer_load_ms=0.0 layer_map_ms=116.3 mmap_fallbacks=0
+[OPS] normA=76.0 q=781.2 k=388.2 v=388.4 attn=60.9 o=781.6 normF=75.7 gate=4656.3 up=4659.6 swiglu=210.5 down=2300.6
+[GATEUP] pair_ms=4664.1 gate_work_ms=4656.3 up_work_ms=4659.6
+[DOWNSPLIT] pair_ms=2300.6 main_work_ms=2293.4 worker_work_ms=2296.0
+[QSPLIT] pair_ms=781.2 main_work_ms=776.3 worker_work_ms=776.7
+[OSPLIT] pair_ms=781.6 main_work_ms=776.4 worker_work_ms=776.8
+[KVDUAL] pair_ms=393.3 k_work_ms=388.2 v_work_ms=388.4
+[ATTNDUAL] pair_ms=51.4 main_work_ms=47.7 worker_work_ms=46.8
+[ROPEKV] rope_ms=6.1 kvstore_ms=2.5 combined_ms=8.6
+[ROPECACHE] build_ms=2.2 hits=187 misses=17
+[SWIGLUDUAL] pair_ms=210.5 main_work_ms=205.2 worker_work_ms=205.9
+
+You> 
+You: thank you
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [thank you]
+[CHAT] native prompt question_tokens=2 total_tokens=4 encode_us=200
+  ids: 4 4323 342 5
+[CHAT] END step=5 generated=5
+[TEST_IDS] 748,6088,270,4843,6070|stopped=yes
+PocketGPT: You're welcome.
+[RAW] You're welcome.
+[STATS] tokens=5 stopped=yes total_ms=5793.4 generation_ms=3552.5 gen_tps=1.4075 layers_ms=4936.0 lm_head_ms=741.6
+[PROFILE] layer_load_ms=0.0 layer_map_ms=61.6 mmap_fallbacks=0
+[OPS] normA=40.3 q=413.5 k=205.5 v=205.6 attn=20.8 o=414.0 normF=40.1 gate=2465.7 up=2467.4 swiglu=111.3 down=1218.2
+[GATEUP] pair_ms=2469.8 gate_work_ms=2465.7 up_work_ms=2467.4
+[DOWNSPLIT] pair_ms=1218.2 main_work_ms=1214.3 worker_work_ms=1215.8
+[QSPLIT] pair_ms=413.5 main_work_ms=411.0 worker_work_ms=411.1
+[OSPLIT] pair_ms=414.0 main_work_ms=411.1 worker_work_ms=411.4
+[KVDUAL] pair_ms=208.1 k_work_ms=205.5 v_work_ms=205.6
+[ATTNDUAL] pair_ms=15.7 main_work_ms=13.8 worker_work_ms=13.3
+[ROPEKV] rope_ms=3.2 kvstore_ms=1.3 combined_ms=4.5
+[ROPECACHE] build_ms=1.1 hits=99 misses=9
+[SWIGLUDUAL] pair_ms=111.3 main_work_ms=108.4 worker_work_ms=108.9
+
+You> 
+You: what is 2+2?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [what is 2+2?]
+[CHAT] native prompt question_tokens=5 total_tokens=7 encode_us=309
+  ids: 4 694 322 425 5181 6109 5
+[CHAT] END step=1 generated=1
+[TEST_IDS] 1828|stopped=yes
+PocketGPT: 4.
+[RAW] 4.
+[STATS] tokens=1 stopped=yes total_ms=4734.0 generation_ms=810.4 gen_tps=1.2339 layers_ms=4385.8 lm_head_ms=247.2
+[PROFILE] layer_load_ms=0.0 layer_map_ms=54.7 mmap_fallbacks=0
+[OPS] normA=35.8 q=367.6 k=182.5 v=182.7 attn=17.1 o=367.9 normF=35.7 gate=2191.5 up=2192.9 swiglu=99.1 down=1082.7
+[GATEUP] pair_ms=2195.1 gate_work_ms=2191.5 up_work_ms=2192.9
+[DOWNSPLIT] pair_ms=1082.7 main_work_ms=1079.3 worker_work_ms=1080.5
+[QSPLIT] pair_ms=367.6 main_work_ms=365.3 worker_work_ms=365.5
+[OSPLIT] pair_ms=367.9 main_work_ms=365.4 worker_work_ms=365.7
+[KVDUAL] pair_ms=184.9 k_work_ms=182.5 v_work_ms=182.7
+[ATTNDUAL] pair_ms=12.7 main_work_ms=11.0 worker_work_ms=10.5
+[ROPEKV] rope_ms=2.8 kvstore_ms=1.2 combined_ms=4.0
+[ROPECACHE] build_ms=1.0 hits=88 misses=8
+[SWIGLUDUAL] pair_ms=99.1 main_work_ms=96.5 worker_work_ms=96.9
+
+You> 
+You: what is 4*5+4?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [what is 4*5+4?]
+[CHAT] native prompt question_tokens=7 total_tokens=9 encode_us=391
+  ids: 4 694 322 680 6124 6097 4941 6109 5
+[CHAT] END step=2 generated=2
+[TEST_IDS] 2806,6070|stopped=yes
+PocketGPT: 24.
+[RAW] 24.
+[STATS] tokens=2 stopped=yes total_ms=6545.2 generation_ms=1497.8 gen_tps=1.3353 layers_ms=6035.5 lm_head_ms=370.8
+[PROFILE] layer_load_ms=0.0 layer_map_ms=75.2 mmap_fallbacks=0
+[OPS] normA=49.2 q=505.3 k=251.1 v=251.3 attn=28.8 o=506.1 normF=49.1 gate=3012.1 up=3014.3 swiglu=136.4 down=1489.0
+[GATEUP] pair_ms=3017.2 gate_work_ms=3012.1 up_work_ms=3014.3
+[DOWNSPLIT] pair_ms=1489.0 main_work_ms=1484.2 worker_work_ms=1486.1
+[QSPLIT] pair_ms=505.3 main_work_ms=502.2 worker_work_ms=502.4
+[OSPLIT] pair_ms=506.1 main_work_ms=502.5 worker_work_ms=502.9
+[KVDUAL] pair_ms=254.4 k_work_ms=251.1 v_work_ms=251.3
+[ATTNDUAL] pair_ms=22.6 main_work_ms=20.4 worker_work_ms=19.7
+[ROPEKV] rope_ms=3.9 kvstore_ms=1.7 combined_ms=5.5
+[ROPECACHE] build_ms=1.4 hits=121 misses=11
+[SWIGLUDUAL] pair_ms=136.4 main_work_ms=132.9 worker_work_ms=133.4
+
+You> 
+You: what is the capital of france?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [what is the capital of france?]
+[CHAT] native prompt question_tokens=8 total_tokens=10 encode_us=1026
+  ids: 4 694 322 271 3637 299 2018 579 6109 5
+[CHAT] END step=8 generated=8
+[TEST_IDS] 330,1168,6088,6052,447,2249,537,6070|stopped=yes
+PocketGPT: I don't have live time.
+[RAW] I don't have live time.
+[STATS] tokens=8 stopped=yes total_ms=11237.8 generation_ms=5627.7 gen_tps=1.4215 layers_ms=9895.7 lm_head_ms=1112.3
+[PROFILE] layer_load_ms=0.0 layer_map_ms=123.2 mmap_fallbacks=0
+[OPS] normA=80.5 q=826.9 k=410.9 v=411.3 attn=67.2 o=827.7 normF=80.3 gate=4929.9 up=4933.4 swiglu=222.7 down=2436.0
+[GATEUP] pair_ms=4938.2 gate_work_ms=4929.9 up_work_ms=4933.4
+[DOWNSPLIT] pair_ms=2436.0 main_work_ms=2428.4 worker_work_ms=2431.1
+[QSPLIT] pair_ms=826.9 main_work_ms=821.7 worker_work_ms=822.1
+[OSPLIT] pair_ms=827.7 main_work_ms=822.1 worker_work_ms=822.6
+[KVDUAL] pair_ms=416.3 k_work_ms=410.9 v_work_ms=411.3
+[ATTNDUAL] pair_ms=57.2 main_work_ms=53.4 worker_work_ms=52.4
+[ROPEKV] rope_ms=6.4 kvstore_ms=2.7 combined_ms=9.1
+[ROPECACHE] build_ms=2.3 hits=198 misses=18
+[SWIGLUDUAL] pair_ms=222.7 main_work_ms=217.0 worker_work_ms=217.8
+
+You> 
+You: what animal says meow?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [what animal says meow?]
+[CHAT] native prompt question_tokens=6 total_tokens=8 encode_us=689
+  ids: 4 694 2988 1203 514 331 6109 5
+[CHAT] END step=6 generated=6
+[TEST_IDS] 330,1168,6088,6052,851,6070|stopped=yes
+PocketGPT: I don't know.
+[RAW] I don't know.
+[STATS] tokens=6 stopped=yes total_ms=8732.6 generation_ms=4247.5 gen_tps=1.4126 layers_ms=7688.7 lm_head_ms=865.2
+[PROFILE] layer_load_ms=0.0 layer_map_ms=95.7 mmap_fallbacks=0
+[OPS] normA=62.7 q=643.4 k=319.5 v=319.8 attn=43.3 o=644.2 normF=62.4 gate=3834.6 up=3837.3 swiglu=173.1 down=1894.9
+[GATEUP] pair_ms=3841.1 gate_work_ms=3834.6 up_work_ms=3837.3
+[DOWNSPLIT] pair_ms=1894.9 main_work_ms=1888.8 worker_work_ms=1891.1
+[QSPLIT] pair_ms=643.4 main_work_ms=639.3 worker_work_ms=639.7
+[OSPLIT] pair_ms=644.2 main_work_ms=639.7 worker_work_ms=640.2
+[KVDUAL] pair_ms=323.7 k_work_ms=319.5 v_work_ms=319.8
+[ATTNDUAL] pair_ms=35.4 main_work_ms=32.7 worker_work_ms=31.8
+[ROPEKV] rope_ms=4.9 kvstore_ms=2.1 combined_ms=7.0
+[ROPECACHE] build_ms=1.8 hits=154 misses=14
+[SWIGLUDUAL] pair_ms=173.1 main_work_ms=168.7 worker_work_ms=169.3
+
+You> 
+You: goodbye
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [goodbye]
+[CHAT] native prompt question_tokens=1 total_tokens=3 encode_us=180
+  ids: 4 4133 5
+[CHAT] END step=7 generated=7
+[TEST_IDS] 330,6088,6064,1508,356,342,6070|stopped=yes
+PocketGPT: I'm here with you.
+[RAW] I'm here with you.
+[STATS] tokens=7 stopped=yes total_ms=6604.1 generation_ms=4924.1 gen_tps=1.4216 layers_ms=5485.8 lm_head_ms=988.8
+[PROFILE] layer_load_ms=0.0 layer_map_ms=68.4 mmap_fallbacks=0
+[OPS] normA=44.7 q=459.5 k=228.2 v=228.4 attn=24.6 o=460.1 normF=44.6 gate=2739.5 up=2741.4 swiglu=123.7 down=1353.4
+[GATEUP] pair_ms=2744.1 gate_work_ms=2739.5 up_work_ms=2741.4
+[DOWNSPLIT] pair_ms=1353.4 main_work_ms=1349.1 worker_work_ms=1350.8
+[QSPLIT] pair_ms=459.5 main_work_ms=456.5 worker_work_ms=456.8
+[OSPLIT] pair_ms=460.1 main_work_ms=456.9 worker_work_ms=457.2
+[KVDUAL] pair_ms=231.2 k_work_ms=228.2 v_work_ms=228.4
+[ATTNDUAL] pair_ms=19.0 main_work_ms=17.0 worker_work_ms=16.4
+[ROPEKV] rope_ms=3.5 kvstore_ms=1.5 combined_ms=5.0
+[ROPECACHE] build_ms=1.3 hits=110 misses=10
+[SWIGLUDUAL] pair_ms=123.7 main_work_ms=120.5 worker_work_ms=121.0
+
+You> 
+You: hello
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [hello]
+[CHAT] native prompt question_tokens=2 total_tokens=4 encode_us=139
+  ids: 4 576 625 5
+[CHAT] END step=3 generated=3
+[TEST_IDS] 355,3048,6070|stopped=yes
+PocketGPT: Hello.
+[RAW] Hello.
+[STATS] tokens=3 stopped=yes total_ms=4421.0 generation_ms=2180.4 gen_tps=1.3759 layers_ms=3836.9 lm_head_ms=494.4
+[PROFILE] layer_load_ms=0.0 layer_map_ms=47.9 mmap_fallbacks=0
+[OPS] normA=31.3 q=321.8 k=159.8 v=160.0 attn=13.9 o=322.0 normF=31.2 gate=1917.5 up=1918.9 swiglu=86.6 down=947.5
+[GATEUP] pair_ms=1920.7 gate_work_ms=1917.5 up_work_ms=1918.9
+[DOWNSPLIT] pair_ms=947.5 main_work_ms=944.5 worker_work_ms=945.6
+[QSPLIT] pair_ms=321.8 main_work_ms=319.7 worker_work_ms=319.9
+[OSPLIT] pair_ms=322.0 main_work_ms=319.7 worker_work_ms=320.0
+[KVDUAL] pair_ms=161.9 k_work_ms=159.8 v_work_ms=160.0
+[ATTNDUAL] pair_ms=10.0 main_work_ms=8.5 worker_work_ms=8.1
+[ROPEKV] rope_ms=2.5 kvstore_ms=1.0 combined_ms=3.5
+[ROPECACHE] build_ms=0.9 hits=77 misses=7
+[SWIGLUDUAL] pair_ms=86.6 main_work_ms=84.4 worker_work_ms=84.7
+
+You> 
+You: how are you?
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [how are you?]
+[CHAT] native prompt question_tokens=4 total_tokens=6 encode_us=267
+  ids: 4 643 362 342 6109 5
+[CHAT] END step=6 generated=6
+[TEST_IDS] 330,6088,6064,2392,3641,6070|stopped=yes
+PocketGPT: I'm doing okay.
+[RAW] I'm doing okay.
+[STATS] tokens=6 stopped=yes total_ms=7605.1 generation_ms=4243.2 gen_tps=1.4140 layers_ms=6586.2 lm_head_ms=865.2
+[PROFILE] layer_load_ms=0.0 layer_map_ms=82.1 mmap_fallbacks=0
+[OPS] normA=53.7 q=551.3 k=273.9 v=274.2 attn=33.4 o=551.9 normF=53.5 gate=3286.7 up=3289.0 swiglu=148.5 down=1624.2
+[GATEUP] pair_ms=3292.2 gate_work_ms=3286.7 up_work_ms=3289.0
+[DOWNSPLIT] pair_ms=1624.2 main_work_ms=1619.0 worker_work_ms=1620.9
+[QSPLIT] pair_ms=551.3 main_work_ms=547.9 worker_work_ms=548.1
+[OSPLIT] pair_ms=551.9 main_work_ms=548.0 worker_work_ms=548.5
+[KVDUAL] pair_ms=277.6 k_work_ms=273.9 v_work_ms=274.2
+[ATTNDUAL] pair_ms=26.6 main_work_ms=24.2 worker_work_ms=23.5
+[ROPEKV] rope_ms=4.3 kvstore_ms=1.8 combined_ms=6.1
+[ROPECACHE] build_ms=1.5 hits=132 misses=12
+[SWIGLUDUAL] pair_ms=148.5 main_work_ms=144.8 worker_work_ms=145.3
+
+You> 
+You: say something nice
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [say something nice]
+[CHAT] native prompt question_tokens=3 total_tokens=5 encode_us=487
+  ids: 4 1450 1071 2122 5
+[CHAT] END step=9 generated=9
+[TEST_IDS] 748,6088,270,2392,1200,663,342,1738,6070|stopped=yes
+PocketGPT: You're doing better than you think.
+[RAW] You're doing better than you think.
+[STATS] tokens=9 stopped=yes total_ms=9105.8 generation_ms=6304.6 gen_tps=1.4275 layers_ms=7689.3 lm_head_ms=1236.0
+[PROFILE] layer_load_ms=0.0 layer_map_ms=95.7 mmap_fallbacks=0
+[OPS] normA=62.6 q=643.4 k=319.6 v=319.9 attn=43.4 o=644.0 normF=62.4 gate=3835.1 up=3837.9 swiglu=173.3 down=1894.7
+[GATEUP] pair_ms=3841.6 gate_work_ms=3835.1 up_work_ms=3837.9
+[DOWNSPLIT] pair_ms=1894.7 main_work_ms=1888.8 worker_work_ms=1891.0
+[QSPLIT] pair_ms=643.4 main_work_ms=639.4 worker_work_ms=639.7
+[OSPLIT] pair_ms=644.0 main_work_ms=639.5 worker_work_ms=640.0
+[KVDUAL] pair_ms=323.9 k_work_ms=319.6 v_work_ms=319.9
+[ATTNDUAL] pair_ms=35.5 main_work_ms=32.6 worker_work_ms=31.8
+[ROPEKV] rope_ms=5.0 kvstore_ms=2.1 combined_ms=7.1
+[ROPECACHE] build_ms=1.8 hits=154 misses=14
+[SWIGLUDUAL] pair_ms=173.3 main_work_ms=168.9 worker_work_ms=169.5
+
+You> 

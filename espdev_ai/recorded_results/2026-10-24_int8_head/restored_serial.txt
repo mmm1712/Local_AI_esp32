@@ -1,0 +1,51 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40056f64
+SPIWP:0xee
+Octal Flash Mode Enabled
+For OPI Flash, Use Default Flash Boot Mode
+mode:SLOW_RD, clock div:1
+load:0x3fce2810,len:0x1078
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xaf0
+load:0x403cb700,len:0x2e54
+entry 0x403c889c
+E (176) esp_core_dump_flash: No core dump partition found!
+E (176) esp_core_dump_flash: No core dump partition found!
+
+=== PocketGPT-S3 TIED30M dedup serial chat (30.46M tied, 20.24MB pack) ===
+Flash=33554432 PSRAM=yes free_psram=16381348
+[CONFIG] PASS layers=12 d_model=448 d_ff=1344 vocab=6144
+[TOKENIZER] PASS init_ms=72.018 free_psram=16018516
+[GATEUP_DUAL] PASS main_core=1 worker_core=0
+[TIED30M_PACKAGE] PASS footer=PGTIEDv1 bytes=20241616 q4=3f747bb82a16ae6b scales=9fec62a157d17c78 kept=d32af894239ee660 verify_ms=1429.8
+[LMHEAD_FP32_CACHE] PASS bytes=11010048 load_ms=1191.206 first4096_sum=362132 free_psram=4041464
+[TIED30M_HEAD_CRC] PASS crc32=0x6306a56a expected=0x6306a56a
+[SCALECACHE] PASS count=432768 bytes=1731072 load_ms=190.494 checksum4096=77803.350353241 free_psram=2304756
+[READY] Local chat demo. Type a short message and press Enter.
+Stops on END or after 24 generated tokens. Try: hello | who are you? | i feel sad
+
+You> 
+You: hello
+PocketGPT: thinking... [TIED30M Q4/FP16 dedup]
+[CHAT] canonical: [hello]
+[CHAT] native prompt question_tokens=2 total_tokens=4 encode_us=157
+  ids: 4 576 625 5
+[CHAT] END step=3 generated=3
+PocketGPT: Hello.
+[RAW] Hello.
+[STATS] tokens=3 stopped=yes total_ms=4420.8 generation_ms=2180.4 gen_tps=1.3759 layers_ms=3836.1 lm_head_ms=494.1
+[PROFILE] layer_load_ms=0.0 layer_map_ms=48.3 mmap_fallbacks=0
+[OPS] normA=31.5 q=321.1 k=159.8 v=159.9 attn=14.0 o=322.1 normF=31.2 gate=1917.1 up=1918.4 swiglu=86.6 down=947.5
+[GATEUP] pair_ms=1920.3 gate_work_ms=1917.1 up_work_ms=1918.4
+[DOWNSPLIT] pair_ms=947.5 main_work_ms=944.5 worker_work_ms=945.6
+[QSPLIT] pair_ms=321.1 main_work_ms=319.1 worker_work_ms=319.2
+[OSPLIT] pair_ms=322.1 main_work_ms=319.8 worker_work_ms=320.1
+[KVDUAL] pair_ms=161.8 k_work_ms=159.8 v_work_ms=159.9
+[ATTNDUAL] pair_ms=10.1 main_work_ms=8.7 worker_work_ms=8.3
+[ROPEKV] rope_ms=2.4 kvstore_ms=1.0 combined_ms=3.5
+[ROPECACHE] build_ms=0.9 hits=77 misses=7
+[SWIGLUDUAL] pair_ms=86.6 main_work_ms=84.5 worker_work_ms=84.7
+
+You> 
